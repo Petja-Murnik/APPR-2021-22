@@ -1,11 +1,10 @@
-# Analiza podatkov s programom R - 2021/22
+# Analiza vpliva nadmorske višine na vremenske razmere in vpliv le-teh na prebivalstvo v Sloveniji
 
-Vzorčni repozitorij za projekt pri predmetu APPR v študijskem letu 2021/22. 
+Repozitorij za projekt pri predmetu APPR v študijskem letu 2021/22. 
 
 ## Tematika
 
-Izbrali si boste temo, s katero se bo vaš projekt ukvarjal.
-Tukaj boste napisali, kje ste dobili podatke, ter kakšen je vaš cilj.
+Analiziral bom vpliv nadmorske višine na temperaturo in padavine v Sloveniji. Podatke sem vzel iz 20 meteoroloških postaj, katerih podatki so bili dostopni na http://meteo.arso.gov.si/met/sl/archive/ . Iz dobljenih vremenskih razmer in podatkih o prebivalstvu, ki sem jih dobil na https://www.stat.si/ , bom iskal korelacijo med vremenskimi razmerami, nadmorsko višino in gostoto poseljenosti.
 
 ## Program
 
