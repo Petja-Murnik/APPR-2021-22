@@ -6,6 +6,30 @@ Repozitorij za projekt pri predmetu APPR v študijskem letu 2021/22.
 
 Analiziral bom vpliv nadmorske višine na temperaturo in padavine v Sloveniji. Podatke sem vzel iz 20 meteoroloških postaj, katerih podatki so bili dostopni na http://meteo.arso.gov.si/met/sl/archive/ . Iz dobljenih vremenskih razmer in podatkih o prebivalstvu, ki sem jih dobil na https://www.stat.si/ , bom iskal korelacijo med vremenskimi razmerami, nadmorsko višino in gostoto poseljenosti.
 
+## Zasnova
+### Tabela 1
+Stolpci bodo:
+* `naselje`
+* `nadmorska_visina`
+* `leto`
+* `mesec` 
+* `temperatura` 
+* `padavine`
+
+### Tabela 2 
+Stolpci bodo:
+* `naselje`
+* `nadmorska_visina`
+* `gostota_prebivalstvo`
+
+### Tabela 3
+Stolpci bodo:
+* `naselje`
+* `nadmorska_visina`
+* `avg_temperatura`
+* `avg_padavine`
+* `gostota_prebivalstvo`
+
 ## Program
 
 Glavni program in poročilo se nahajata v datoteki `projekt.Rmd`.
