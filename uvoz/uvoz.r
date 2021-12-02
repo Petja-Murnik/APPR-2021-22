@@ -52,18 +52,23 @@ temperature$naselje = p
 ######
 
 gostota_prebivalci = read_csv("podatki/gostota_prebivalcev.csv", na="...",
-                              locale=locale(encoding="Windows-1250"))
-
+                              locale=locale(encoding="Windows-1250"),
+                              )
+                            
+gostota_prebivalci[2] = as.double(unlist(gostota_prebivalci[2]))
+gostota_prebivalci[3] = as.double(unlist(gostota_prebivalci[3]))
+gostota_prebivalci[4] = as.double(unlist(gostota_prebivalci[4]))
+gostota_prebivalci[5] = as.double(unlist(gostota_prebivalci[5]))
+                                   
 vzorec_stolpci = "(\\d{4})( [a-zA-ZčšžČŠŽ ]*)$"
 colnames(gostota_prebivalci)[-1] = str_replace_all(colnames(gostota_prebivalci)[-1], vzorec_stolpci,"\\1")
 gostota_prebivalci = rename(gostota_prebivalci, "naselje"="OBČINA/NASELJE")
 
-gostota_prebivalci = pivot_longer(gostota_prebivalci,
+gostota_prebivalci <- pivot_longer(gostota_prebivalci,
                                   cols = colnames(gostota_prebivalci)[-1],
                                   names_to = "datum",
-                                  values_to = "ro"
+                                  values_to = "gostota"
                                   )
-##problem je ker so od 2-5 stolpca chr namesto dbl !!
 
 
 vzorec_stolpci = "(\\d{4})( [a-zA-ZčšžČŠŽ ]*)$"
