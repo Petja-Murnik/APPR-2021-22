@@ -10,7 +10,7 @@ library(readxl)
 sl <- locale("sl", decimal_mark=".", grouping_mark=",")
 
 
-#######
+##PADAVINE
 
 padavine <- read_csv("podatki/mesecne_padavine_2.csv", na="...",
               locale=locale(encoding="Windows-1250"),col_names =TRUE)
@@ -34,12 +34,21 @@ vzorec = "([a-zA-Zčšž ]+)(\\,)([a-zA-Zčšž ]*)$"
 p = str_replace_all(padavine$naselje, vzorec, "\\1")
 padavine$naselje = p
 
-#########
+##TEMPERATUE
 
 temperature <- read_csv("podatki/temperature.csv", na="...",
                      locale=locale(encoding="Windows-1250"),col_names =TRUE)
 
+temperature = pivot_longer(temperature,
+                           cols = colnames(temperature)[c(-1,-2)],
+                           names_to = "mesec",
+                           values_to = "temperature"
+                           )
 
+temperature = rename(temperature, "naselje" = "METEOROLOŠKA POSTAJA" , "leto" = "OBDOBJE, LETO" )
+
+temperature$naselje = p
+  
 ######
 
 gostota_prebivalci = read_csv("podatki/gostota_prebivalcev.csv", na="...",
