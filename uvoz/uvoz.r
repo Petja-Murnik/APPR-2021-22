@@ -9,10 +9,30 @@ library(readxl)
 
 sl <- locale("sl", decimal_mark=".", grouping_mark=",")
 
+
+#######
+
 padavine <- read_csv("podatki/mesecne_padavine_2.csv", na="...",
               locale=locale(encoding="Windows-1250"),col_names =TRUE)
 
+padavine = pivot_longer(padavine,
+                          cols = colnames(padavine)[-1],
+                          names_to = "datum",
+                          values_to = "padavine"
+                          )
 
+padavine = separate(padavine,
+                    col = "datum",
+                    into = c("leto", "mesec"),
+                    sep = " "
+                    )
+
+padavine = rename(padavine, "naselje"="METEOROLOŠKA POSTAJA")
+
+#želim še nekako zrihtat imena
+vzorec = "([a-zA-Zčšž ]+)(\\,)([a-zA-Zčšž ]*)$"
+p = str_replace_all(padavine$naselje, vzorec, "\\1")
+padavine$naselje = p
 
 #########
 
@@ -28,7 +48,7 @@ gostota_prebivalci = read_csv("podatki/gostota_prebivalcev.csv", na="...",
 
 #######
 
-nadmorske = read_excel("podatki/nadmorske_visine.xlsx", sheet=1,
+ nadmorske = read_excel("podatki/nadmorske_visine.xlsx", sheet=1,
                        col_names = FALSE)
 
-colnames(nadmorske) = c("naselje","nmv")
+# colnames(nadmorske) = c("naselje","nmv")
