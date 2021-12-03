@@ -70,16 +70,22 @@ gostota_prebivalci <- pivot_longer(gostota_prebivalci,
                                   values_to = "gostota"
                                   )
 
-
 vzorec_stolpci = "(\\d{4})( [a-zA-ZčšžČŠŽ ]*)$"
 
-vzorec_preb = "(\\d{0,8} )([a-zčšžA-ZČŠŽ ]*)$"
-#q = str_replace_all(...,vzorec_preb,"\\2")
-#gostota_prebivalci
+vzorec_preb = "(\\d{0,8}[ ]*)([a-zčšžA-ZČŠŽ ]*)$"
+gostota_prebivalci$naselje = str_replace_all(gostota_prebivalci$naselje,vzorec_preb,"\\2")
 
-#######
+##NADMORSKE
 
- nadmorske = read_excel("podatki/nadmorske_visine.xlsx", sheet=1,
+nadmorske = read_excel("podatki/nadmorske_visine.xlsx", sheet=1,
                        col_names = FALSE)
-
-# colnames(nadmorske) = c("naselje","nmv")
+colnames(nadmorske) = c("naselje", "nmv")
+ 
+#vzorec_nmv = "(\\d{0,2} )([a-zA-ZčšžČŠŽ ]+)([,]*)([a-zA-ZčžšČŽ ]*)"
+#nadmorske$naselje = str_replace_all(nadmorske$naselje,vzorec_nmv,"\\2")
+#vzorec_nmv_2 = "([a-zA-ZčšžČŠŽ ])(, [a-zA-ZčžšČŽ ]*)$" 
+#nadmorske$naselje = str_replace_all(nadmorske$naselje, vzorec_nmv_2,"\\1")
+ 
+ 
+ 
+ 
