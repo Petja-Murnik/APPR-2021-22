@@ -10,7 +10,7 @@ library(readxl)
 sl <- locale("sl", decimal_mark=".", grouping_mark=",")
 
 
-##PADAVINE
+#######PADAVINE
 
 padavine <- read_csv("podatki/mesecne_padavine_2.csv", na="...",
               locale=locale(encoding="Windows-1250"),col_names =TRUE)
@@ -49,7 +49,8 @@ temperature = rename(temperature, "naselje" = "METEOROLOŠKA POSTAJA" , "leto" =
 
 temperature$naselje = p
   
-######
+
+######GOSTOTA PREBIVALCEV
 
 gostota_prebivalci = read_csv("podatki/gostota_prebivalcev.csv", na="...",
                               locale=locale(encoding="Windows-1250"),
@@ -75,17 +76,22 @@ vzorec_stolpci = "(\\d{4})( [a-zA-ZčšžČŠŽ ]*)$"
 vzorec_preb = "(\\d{0,8}[ ]*)([a-zčšžA-ZČŠŽ ]*)$"
 gostota_prebivalci$naselje = str_replace_all(gostota_prebivalci$naselje,vzorec_preb,"\\2")
 
-##NADMORSKE
+
+######NADMORSKE
 
 nadmorske = read_excel("podatki/nadmorske_visine.xlsx", sheet=1,
                        col_names = FALSE)
 colnames(nadmorske) = c("naselje", "nmv")
- 
-#vzorec_nmv = "(\\d{0,2} )([a-zA-ZčšžČŠŽ ]+)([,]*)([a-zA-ZčžšČŽ ]*)"
-#nadmorske$naselje = str_replace_all(nadmorske$naselje,vzorec_nmv,"\\2")
-#vzorec_nmv_2 = "([a-zA-ZčšžČŠŽ ])(, [a-zA-ZčžšČŽ ]*)$" 
-#nadmorske$naselje = str_replace_all(nadmorske$naselje, vzorec_nmv_2,"\\1")
- 
- 
+
+nadmorske$naselje = nadmorske$naselje %>%
+  str_replace_all(.,"([a-zA-ZčšžČŠŽ0-9 ]+)(\\,)([a-zA-ZčšžČŠŽ ]*)","\\1") %>%
+  str_replace_all(., "(\\s{0,1}\\d{1,2}\\s{1})([a-zA-ZčšžČŠŽ ]*)","\\2") %>%
+  str_replace_all(., "([a-zA-ZčšžČŠŽ ]+[a-zčšž]{1})(\\s*)","\\1")
+  
+
+######SNEG
+
+#Bilje in Brnik/letališče jožeta pučnika 2001 do 2010
+sn_1 = read_csv("podatki/sneg_nevihte_bilje_brnik",na="...",locale=locale(encoding="UTF-8"),col_names =TRUE)
  
  
