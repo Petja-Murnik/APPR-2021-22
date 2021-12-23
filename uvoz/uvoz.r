@@ -26,7 +26,7 @@ padavine = separate(padavine,
                     into = c("leto", "mesec"),
                     sep = " "
                     )
-
+padavine$leto = as.double(padavine$leto)
 padavine = rename(padavine, "naselje"="METEOROLOŠKA POSTAJA")
 
 #želim še nekako zrihtat imena
@@ -94,4 +94,13 @@ nadmorske$naselje = nadmorske$naselje %>%
 #Bilje in Brnik/letališče jožeta pučnika 2001 do 2010
 sn_1 = read_csv("podatki/sneg_nevihte_bilje_brnik",na="...",locale=locale(encoding="UTF-8"),col_names =TRUE)
  
- 
+####TABELA 1 
+tabela1 = left_join(temperature, padavine,by = c("naselje","leto","mesec")) %>%
+  left_join(nadmorske,by="naselje")
+
+####TABELA2
+tabela2 = left_join(nadmorske, gostota_prebivalci, by="naselje")
+
+
+
+
