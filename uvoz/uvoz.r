@@ -90,9 +90,9 @@ nadmorske$naselje = nadmorske$naselje %>%
   
 
 ######SNEG
-
+#
 #Bilje in Brnik/letališče jožeta pučnika 2001 do 2010
-sn_1 = read_csv("podatki/sneg_nevihte_bilje_brnik",na="...",locale=locale(encoding="UTF-8"),col_names =TRUE)
+#sn_1 = read_csv("podatki/sneg_nevihte_bilje_brnik",na="...",locale=locale(encoding="UTF-8"),col_names =TRUE)
  
 ####TABELA 1 
 tabela1 = left_join(temperature, padavine,by = c("naselje","leto","mesec")) %>%
