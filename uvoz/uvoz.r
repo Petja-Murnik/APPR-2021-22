@@ -101,6 +101,15 @@ tabela1 = left_join(temperature, padavine,by = c("naselje","leto","mesec")) %>%
 ####TABELA2
 tabela2 = left_join(nadmorske, gostota_prebivalci, by="naselje")
 
+####TABELA3
+#Zdi se mi, da bo tu treba malo več dela če želim, da je tabela taka kot si jo zelim,
+#zato bom naredil vec podpornih tabelc 
 
+t3_temp = temperature %>% group_by(naselje,leto) %>% summarise(avg_t = sum(temperature)/12)
+t3_pad = padavine %>% group_by(naselje,leto) %>% summarise(avg_p = sum(padavine)/12)
+t3_preb = gostota_prebivalci %>% group_by(naselje) %>% summarise(avg_preb = sum(gostota))
 
+tabela3 = left_join(t3_temp,t3_pad ,by=c("naselje","leto")) %>% left_join(t3_preb, by= "naselje")
+
+ 
 
