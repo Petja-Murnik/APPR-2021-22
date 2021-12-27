@@ -10,10 +10,14 @@
 library(ggplot2)
 library(dbplyr)
 
+##dež za vse
+tabela1$datum = paste(tabela1$leto ,tabela1$mesec,sep="-") 
+g1 = ggplot(tabela1%>%filter(leto == "2001")) + aes(x = mesec, y = padavine ) + geom_col(position = "dodge") + 
+  facet_wrap(. ~ naselje, ncol = 3)
+print(g1)
 
 
-
-
+##
 
 
 
