@@ -73,9 +73,12 @@ gostota_prebivalci <- pivot_longer(gostota_prebivalci,
 
 vzorec_stolpci = "(\\d{4})( [a-zA-ZčšžČŠŽ ]*)$"
 
-vzorec_preb = "(\\d{0,8}[ ]*)([a-zčšžA-ZČŠŽ ]*)$"
+vzorec_preb = "(\\d{0,8}\\s*)([a-zčšžA-ZČŠŽ ]*)$"
 gostota_prebivalci$naselje = str_replace_all(gostota_prebivalci$naselje,vzorec_preb,"\\2")
-
+##! kako naj naredim da bo regularni izraz mi spremenil 090007 Portorož/Portorose v Portorož 
+#
+#Oziroma zakaj zgornja vrstica če dam za vzorec_preb = "(\\d{0,8}\\s*)([a-zčšžA-ZČŠŽ ]+)(/*[a-zčšžA-ZČŠŽ ]*)$"
+#
 
 ######NADMORSKE
 
