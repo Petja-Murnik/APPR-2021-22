@@ -11,7 +11,7 @@ library(ggplot2)
 library(dbplyr)
 
 ##dež za vse
-tabela1$datum = paste(tabela1$leto ,tabela1$mesec,sep="-") 
+ 
 g1 = ggplot(tabela1%>%filter(leto == "2001")) + aes(x = mesec, y = padavine ) + geom_col(position = "dodge") + 
   facet_wrap(. ~ naselje, ncol = 3)
 print(g1)
@@ -34,4 +34,19 @@ g4 = ggplot(tabela3%>%group_by(naselje)) + aes(x = leto, y = avg_p) + geom_line(
 print(g4)
 
 
+#temperatur za vse po vseh mesecih iz tabele 1 
+g5 = ggplot(tabela1) + aes(x = datum , y = temperature) +
+  geom_col() + facet_wrap(. ~ naselje, ncol = 3) 
+print(g5)
 
+#dež za vse po vseh mesecih iz tbele 1
+g6 = ggplot(tabela1) + aes(x = datum , y = padavine) +
+  geom_col() + facet_wrap(. ~ naselje, ncol = 3) 
+print(g6)
+
+##
+g7 = ggplot(tabela3%>%filter(leto=="2010")) + aes(x=nmv , y = avg_t)+ 
+  geom_point()
+print(g7)
+
+#še isto temperature gostota prebivalcev
