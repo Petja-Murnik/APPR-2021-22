@@ -73,12 +73,11 @@ gostota_prebivalci <- pivot_longer(gostota_prebivalci,
 
 vzorec_stolpci = "(\\d{4})( [a-zA-ZčšžČŠŽ ]*)$"
 
-vzorec_preb = "(\\d{0,8}\\s*)([a-zčšžA-ZČŠŽ ]*)$"
+vzorec_preb = "(\\d{0,8}\\s*)([a-zčšžA-ZČŠŽ.-/ ]*)$"
 gostota_prebivalci$naselje = str_replace_all(gostota_prebivalci$naselje,vzorec_preb,"\\2")
-##! kako naj naredim da bo regularni izraz mi spremenil 090007 Portorož/Portorose v Portorož 
-#
-#Oziroma zakaj zgornja vrstica če dam za vzorec_preb = "(\\d{0,8}\\s*)([a-zčšžA-ZČŠŽ ]+)(/*[a-zčšžA-ZČŠŽ ]*)$"
-#
+vzorec_preb_2 = "([a-zA-ZčšžČŠŽ ]+)(\\/*)([a-zA-ZčšžČŠŽ ]*)"
+gostota_prebivalci$naselje = str_replace_all(gostota_prebivalci$naselje,vzorec_preb_2,"\\1")
+
 
 ######NADMORSKE
 
@@ -100,7 +99,7 @@ nadmorske$naselje = nadmorske$naselje %>%
 ####TABELA 1 
 tabela1 = left_join(temperature, padavine,by = c("naselje","leto","mesec")) %>%
   left_join(nadmorske,by="naselje")
-
+tabela1$datum = paste(tabela1$leto ,tabela1$mesec,sep="-")
 ####TABELA2
 tabela2 = left_join(nadmorske, gostota_prebivalci, by="naselje")
 
@@ -113,6 +112,7 @@ t3_pad = padavine %>% group_by(naselje,leto) %>% summarise(avg_p = sum(padavine)
 t3_preb = gostota_prebivalci %>% group_by(naselje) %>% summarise(avg_preb = sum(gostota))
 
 tabela3 = left_join(t3_temp,t3_pad ,by=c("naselje","leto")) %>% left_join(t3_preb, by= "naselje")
+tabela3$avg_preb[tabela3$naselje=="Kredarica"] = 0
 
- 
+tabela3 = left_join(tabela3,nadmorske,by ="naselje")   
 
