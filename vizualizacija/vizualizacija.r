@@ -1,15 +1,9 @@
 # 3. faza: Vizualizacija podatkov
 #Plan imam narisat naprej kako za vsako naselje to grejo padavine in temperature(TIME; FASETING)
-#potem iz nmv pogledat padavine
-#iz nmv na temp
-#iz nmv na gost 
-#iz temp, pad na gost
-
-
 
 library(ggplot2)
 library(dbplyr)
-
+source("uvoz/uvoz.r", encoding="UTF-8")
 ##dež za vse
  
 g1 = ggplot(tabela1%>%filter(leto == "2001")) + aes(x = mesec, y = padavine ) + geom_col(position = "dodge") + 
@@ -18,7 +12,7 @@ print(g1)
 
 
 ##temperature za vse
-g2 = ggplot(tabela1%>%filter(leto == "2001")) + aes(x = mesec, y = temperature ) + geom_col(position = "dodge") + 
+g2 = ggplot(tabela1%>%filter(leto == "2001")) + aes(x = mesec, y = temperature,group = 1 ) + geom_line(position = "dodge") + 
   facet_wrap(. ~ naselje, ncol = 3)
 print(g2)
 
@@ -35,8 +29,8 @@ print(g4)
 
 
 #temperatur za vse po vseh mesecih iz tabele 1 
-g5 = ggplot(tabela1) + aes(x = datum , y = temperature) +
-  geom_col() + facet_wrap(. ~ naselje, ncol = 3) 
+g5 = ggplot(tabela1) + aes(x = datum , y = temperature, group = 1) +
+  geom_line() + facet_wrap(. ~ naselje, ncol = 3) 
 print(g5)
 
 #dež za vse po vseh mesecih iz tbele 1
@@ -46,7 +40,30 @@ print(g6)
 
 ##
 g7 = ggplot(tabela3%>%filter(leto=="2010")) + aes(x=nmv , y = avg_t)+ 
-  geom_point()
+  geom_point() + stat_smooth(method = lm) 
 print(g7)
 
-#še isto temperature gostota prebivalcev
+
+##
+
+g8 = ggplot(tabela3%>%filter(leto=="2010")) + aes(x=nmv , y = avg_p)+ 
+  geom_point() + stat_smooth(method = lm) 
+print(g8)
+
+##
+g9 = ggplot(tabela3%>%filter(leto=="2010")) + aes(x=nmv , y = avg_preb)+ 
+  geom_point() + stat_smooth(method = lm)
+print(g9)
+
+##
+g10 = ggplot(tabela3[tabela3$naselje != "Kredarica",]%>%filter(leto=="2010")) + aes(x=avg_t , y = avg_preb)+ 
+  geom_point() + stat_smooth(method = lm)
+print(g10)
+
+## 
+g11 = ggplot(tabela3[tabela3$naselje != "Kredarica",]%>%filter(leto=="2010")) + aes(x=avg_p , y = avg_preb)+ 
+  geom_point() + stat_smooth(method = lm)
+print(g11)
+
+##
+
