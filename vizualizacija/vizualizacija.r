@@ -66,4 +66,4 @@ g11 = ggplot(tabela3[tabela3$naselje != "Kredarica",]%>%filter(leto=="2010")) + 
 print(g11)
 
 ##
-
+#TODO risati na zemljavide

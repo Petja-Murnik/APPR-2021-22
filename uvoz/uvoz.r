@@ -116,3 +116,6 @@ tabela3$avg_preb[tabela3$naselje=="Kredarica"] = 0
 
 tabela3 = left_join(tabela3,nadmorske,by ="naselje")   
 
+#TODO
+####PODATKI O GEO. SIRINI IN GEO VISINI MOJIH NASELIJ ZA RISANJE NA ZEMLJEVID
+
