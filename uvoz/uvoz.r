@@ -10,6 +10,11 @@ library(readxl)
 sl <- locale("sl", decimal_mark=".", grouping_mark=",")
 
 
+#Prevajalna tabela za mesece
+prevod_meseci = tibble(mesec = c("Januar","Februar","Marec","April","Maj","Junij",
+                                 "Julij","Avgust","September","Oktober","November","December"),
+                       mesec_c = c(1,2,3,4,5,6,7,8,9,10,11,12))
+
 #######PADAVINE
 
 padavine <- read_csv("podatki/mesecne_padavine_2.csv", na="...",
@@ -100,6 +105,9 @@ nadmorske$naselje = nadmorske$naselje %>%
 tabela1 = left_join(temperature, padavine,by = c("naselje","leto","mesec")) %>%
   left_join(nadmorske,by="naselje")
 tabela1$datum = paste(tabela1$leto ,tabela1$mesec,sep="-")
+tabela1 = left_join(tabela1,prevod_meseci,by="mesec")
+tabela1$datum_c = paste(tabela1$leto,tabela1$mesec_c,sep="-")
+
 ####TABELA2
 tabela2 = left_join(nadmorske, gostota_prebivalci, by="naselje")
 
@@ -118,4 +126,6 @@ tabela3 = left_join(tabela3,nadmorske,by ="naselje")
 
 #TODO
 ####PODATKI O GEO. SIRINI IN GEO VISINI MOJIH NASELIJ ZA RISANJE NA ZEMLJEVID
+#geo sirina in visina
+
 

@@ -6,16 +6,16 @@ library(dbplyr)
 source("uvoz/uvoz.r", encoding="UTF-8")
 ##dež za vse
  
-g1 = ggplot(tabela1%>%filter(leto == "2001")) + aes(x = mesec, y = padavine ) + geom_col(position = "dodge") + 
+g1 = ggplot(tabela1%>%filter(leto == "2001")) + aes(x = mesec_c, y = padavine ) + geom_col(position = "dodge") + 
   facet_wrap(. ~ naselje, ncol = 3)
 print(g1)
-
+#poprav mesece da so povrst
 
 ##temperature za vse
-g2 = ggplot(tabela1%>%filter(leto == "2001")) + aes(x = mesec, y = temperature,group = 1 ) + geom_line(position = "dodge") + 
+g2 = ggplot(tabela1%>%filter(leto == "2001")) + aes(x = mesec_c, y = temperature,group = 1 ) + geom_line(position = "dodge") + 
   facet_wrap(. ~ naselje, ncol = 3)
 print(g2)
-
+#poprav mesece da so povrst
 
 ##iz tabele 3 bi rad narisu kako grejo čez čas avg 
 g3 =ggplot(tabela3%>%group_by(naselje)) + aes(x = leto, y = avg_t) + geom_line() + 
@@ -29,12 +29,12 @@ print(g4)
 
 
 #temperatur za vse po vseh mesecih iz tabele 1 
-g5 = ggplot(tabela1) + aes(x = datum , y = temperature, group = 1) +
+g5 = ggplot(tabela1) + aes(x = datum_c , y = temperature, group = 1) +
   geom_line() + facet_wrap(. ~ naselje, ncol = 3) 
 print(g5)
 
 #dež za vse po vseh mesecih iz tbele 1
-g6 = ggplot(tabela1) + aes(x = datum , y = padavine) +
+g6 = ggplot(tabela1) + aes(x = datum_c , y = padavine) +
   geom_col() + facet_wrap(. ~ naselje, ncol = 3) 
 print(g6)
 
