@@ -15,6 +15,12 @@ prevod_meseci = tibble(mesec = c("Januar","Februar","Marec","April","Maj","Junij
                                  "Julij","Avgust","September","Oktober","November","December"),
                        mesec_c = c(1,2,3,4,5,6,7,8,9,10,11,12))
 
+####PODATKI O GEO. SIRINI IN GEO VISINI MOJIH NASELIJ ZA RISANJE NA ZEMLJEVID
+#geo sirina in visina
+
+prevod_lokacije = read_excel("podatki/lokacije.xlsx", sheet=1,
+                                         col_names = TRUE)
+
 #######PADAVINE
 
 padavine <- read_csv("podatki/mesecne_padavine_2.csv", na="...",
@@ -122,10 +128,7 @@ t3_preb = gostota_prebivalci %>% group_by(naselje) %>% summarise(avg_preb = sum(
 tabela3 = left_join(t3_temp,t3_pad ,by=c("naselje","leto")) %>% left_join(t3_preb, by= "naselje")
 tabela3$avg_preb[tabela3$naselje=="Kredarica"] = 0
 
-tabela3 = left_join(tabela3,nadmorske,by ="naselje")   
-
-#TODO
-####PODATKI O GEO. SIRINI IN GEO VISINI MOJIH NASELIJ ZA RISANJE NA ZEMLJEVID
-#geo sirina in visina
+tabela3 = left_join(tabela3,nadmorske,by ="naselje")  
+tabela3 = left_join(tabela3,prevod_lokacije,by="naselje")
 
 

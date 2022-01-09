@@ -3,6 +3,9 @@
 
 library(ggplot2)
 library(dbplyr)
+library(maps)
+library(viridis)
+library(plotly)
 source("uvoz/uvoz.r", encoding="UTF-8")
 ##dež za vse
  
@@ -67,3 +70,14 @@ print(g11)
 
 ##
 #TODO risati na zemljavide
+
+SLO <- map_data("world") %>% filter(region=="Slovenia")
+data = tabela3%>%filter(leto=="2010")
+
+g12 = ggplot() +
+  geom_polygon(data = SLO, aes(x=long, y = lat, group = group), fill="grey", alpha=0.3) +
+  geom_point( data=data, aes(x=lon, y=lat, size=avg_preb,color=nmv)) +
+  scale_size_continuous(range=c(1,12)) +
+  scale_color_viridis(trans="log") +
+  theme_void() + ylim(45,47) + coord_map() 
+print(g12)
