@@ -115,3 +115,9 @@ g14 = ggplot() +
     size = 2.5
   )
 print(g14)
+
+
+##
+g15 = ggplot(tabela2%>%group_by(naselje)) + aes(x=datum, y=gostota,group = 1)  +
+  geom_line() + facet_wrap(.~ naselje, ncol = 3)
+print(g15)
