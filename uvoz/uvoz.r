@@ -113,6 +113,11 @@ tabela1 = left_join(temperature, padavine,by = c("naselje","leto","mesec")) %>%
 tabela1$datum = paste(tabela1$leto ,tabela1$mesec,sep="-")
 tabela1 = left_join(tabela1,prevod_meseci,by="mesec")
 tabela1$datum_c = paste(tabela1$leto,tabela1$mesec_c,sep="-")
+tabela1$datum_c = paste(tabela1$datum_c,"01",sep = "-")
+tabela1$datum_c = format(as.Date(tabela1$datum_c),"%Y-%m-%d")
+tabela1 = tabela1%>%
+  group_by(naselje) %>%
+  mutate(datum_c=as.Date(datum_c, format = "%Y-%m-%d"))
 
 ####TABELA2
 tabela2 = left_join(nadmorske, gostota_prebivalci, by="naselje")

@@ -9,14 +9,14 @@ source("uvoz/uvoz.r", encoding="UTF-8")
 ##dež za vse
  
 g1 = ggplot(tabela1%>%filter(leto == "2001")) + aes(x = mesec_c, y = padavine ) + geom_col(position = "dodge") + 
-  facet_wrap(. ~ naselje, ncol = 3)
-#print(g1)
+  facet_wrap(. ~ naselje, ncol = 3) 
+print(g1)
 
 
 ##temperature za vse
 g2 = ggplot(tabela1%>%filter(leto == "2001")) + aes(x = mesec_c, y = temperature,group = 1 ) + geom_line(position = "dodge") + 
   facet_wrap(. ~ naselje, ncol = 3)
-#print(g2)
+print(g2)
 
 ##iz tabele 3 bi rad narisu kako grejo čez čas avg 
 g3 =ggplot(tabela3%>%group_by(naselje)) + aes(x = leto, y = avg_t) + geom_line() + 
@@ -37,7 +37,7 @@ g5 = ggplot(tabela1) + aes(x = datum_c , y = temperature, group = 1) +
 #dež za vse po vseh mesecih iz tbele 1
 g6 = ggplot(tabela1) + aes(x = datum_c , y = padavine) +
   geom_col() + facet_wrap(. ~ naselje, ncol = 3) 
-#print(g6)
+print(g6)
 
 ##
 g7 = ggplot(tabela3%>%filter(leto=="2010")) + aes(x=nmv , y = avg_t)+ 
@@ -77,7 +77,7 @@ g12 = ggplot() +
   geom_polygon(data = SLO, aes(x=long, y = lat, group = group), fill="grey", alpha=0.3) +
   geom_point( data=data1, aes(x=lon, y=lat, size=avg_preb,color=nmv)) +
   scale_size_continuous(range=c(1,12)) +
-  scale_color_viridis(trans="lin") +
+  scale_color_viridis(trans="log") +
   theme_void() + ylim(45,47) + coord_map()  +
   geom_text(
     data = data1,
@@ -92,7 +92,7 @@ g13 = ggplot() +
   geom_polygon(data = SLO, aes(x=long, y = lat, group = group), fill="grey", alpha=0.3) +
   geom_point( data=data2, aes(x=lon, y=lat, size=avg_p,color=nmv)) +
   scale_size_continuous(range=c(1,12)) +
-  scale_color_viridis(trans="lin") +
+  scale_color_viridis(trans="log") +
   theme_void() + ylim(45,47) + coord_map()  +
   geom_text(
     data = data2,
@@ -114,10 +114,10 @@ g14 = ggplot() +
     mapping = aes(x = lon , y = lat+0.07, label = naselje),
     size = 2.5
   )
-print(g14)
+#print(g14)
 
 
 ##
 g15 = ggplot(tabela2%>%group_by(naselje)) + aes(x=datum, y=gostota,group = 1)  +
   geom_line() + facet_wrap(.~ naselje, ncol = 3)
-print(g15)
+#print(g15)
