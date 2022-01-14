@@ -27,8 +27,12 @@ shinyUI(fluidPage(
               selected = "Bilje"
   ))
 ,
-    mainPanel(plotOutput("graf")))),
-    uiOutput("izborTabPanel")))
+    mainPanel(plotOutput("graf"))),
+    uiOutput("izborTabPanel"))))
+
+
+
+
 
 
 
