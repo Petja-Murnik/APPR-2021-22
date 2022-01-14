@@ -6,8 +6,21 @@ library(tmap)
 library(shiny)
 library(readr)
 library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(dbplyr)
+library(maps)
+library(viridis)
+library(readr)
+library(dplyr)
+library(stringr)
+library(tidyr)
+library(rvest)
+library(tidyverse)
+library(readxl)
 
 options(gsubfn.engine="R")
 
 # Uvozimo funkcije za pobiranje in uvoz zemljevida.
 source("lib/uvozi.zemljevid.r", encoding="UTF-8")
+

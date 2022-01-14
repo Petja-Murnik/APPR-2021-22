@@ -1,4 +1,4 @@
-# Analiza vpliva nadmorske višine na vremenske razmere in vpliv le-teh na prebivalstvo v Sloveniji
+# Analiza povezave nadmorske višine, vremenskih razmer in gostote poseljenosti v Sloveniji
 
 Repozitorij za projekt pri predmetu APPR v študijskem letu 2021/22. 
 

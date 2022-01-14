@@ -1,5 +1,15 @@
 library(shiny)
 
+shinyServer(function(input, output) {
+  
+  output$graf <- renderPlot({
+    narisi_grafek(input$naselje1,input$vrsta, input$leto1)
+  })
+})
+
+
+
+
 
 narisi_grafek = function(naselje1, vrsta, leto1){
   if (vrsta == "padavine"){
@@ -32,26 +42,26 @@ narisi_grafek = function(naselje1, vrsta, leto1){
 }
 
 
-inputPanel(
-  sliderInput(
-    "leto1",
-    label = "Leto:",
-    min = 2001, max = 2014, step = 1,
-    value = 2010
-  ),
-  selectInput(
-    "vrsta",
-    label = "Opazovani pojav:",
-    choices = c("padavine", "temperatura"),
-    selected = "padavine"
-  ),
-  selectInput(
-    "naselje1",
-    label = "Opazovano naselje:",
-    choices = data$naselje,
-    selected = "Bilje"
-)
+#inputPanel(
+#  sliderInput(
+#    "leto1",
+#    label = "Leto:",
+#    min = 2001, max = 2014, step = 1,
+#    value = 2010
+#  ),
+#  selectInput(
+#    "vrsta",
+#    label = "Opazovani pojav:",
+#    choices = c("padavine", "temperatura"),
+#    selected = "padavine"
+#  ),
+#  selectInput(
+#    "naselje1",
+#    label = "Opazovano naselje:",
+#    choices = data$naselje,
+#    selected = "Bilje"
+#  )
+#)
 
-renderPrint({
-  list(input$naselje1, input$vrsta, input$leto1 )
-})
+
+
