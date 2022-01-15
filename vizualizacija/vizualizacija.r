@@ -54,8 +54,8 @@ g8 = ggplot(tabela3) + aes(x=nmv , y = avg_p)+
 #print(g8)
 
 ##
-g9 = ggplot(tabela3) + aes(x=nmv , y = avg_preb)+ 
-  geom_point() + stat_smooth(method = lm)
+g9 = ggplot(tabela3) + aes(x=nmv , y = avg_preb,color=naselje)+ 
+  geom_point() 
 #print(g9)
 
 ##
@@ -79,7 +79,7 @@ g12 = ggplot() +
   geom_polygon(data = SLO, aes(x=long, y = lat, group = group), fill="grey", alpha=0.3) +
   geom_point( data=data1, aes(x=lon, y=lat, size=avg_preb,color=nmv)) +
   scale_size_continuous(range=c(1,12)) +
-  scale_colour_viridis(trans="lin",option = "C") +
+  scale_colour_viridis(trans="log",option = "C") +
   theme_void() + ylim(45,47) + coord_map()  +
   geom_text(
     data = data1,
@@ -176,7 +176,9 @@ ggplot(tabela1%>%group_by(naselje), aes(datum_c, padavine)) +
 #Zato bom uporabil kar g5 in g6
 
 #To idejo pa lahkko uporabim na grafih g2 in g1
-G1 = ggplot(tabela1%>%filter(leto == "2010"), aes(mesec_c, padavine)) + 
+G1 = ggplot(tabela1%>%filter(leto == "2010")%>%
+              filter(naselje!= "Rogaška Slatina")%>%filter(naselje != "Slap pri Vipavi" ),
+            aes(mesec_c, padavine)) + 
   geom_col(fill = "dark blue") +
   geom_line(aes(y = a + temperature*b), color = "red") +
   scale_y_continuous("Padavine v mesecu[mm/m^2]", sec.axis = sec_axis(~ (. - a)/b, name = "Temperature[°C]"))+
@@ -190,3 +192,5 @@ G1 = ggplot(tabela1%>%filter(leto == "2010"), aes(mesec_c, padavine)) +
 #PLAN zaenkrat:
 #G1,g5,g6
 #dodam JESENICE na g13,g14,g15
+
+
