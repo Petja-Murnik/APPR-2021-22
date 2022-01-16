@@ -118,7 +118,7 @@ tabela1$datum_c = format(as.Date(tabela1$datum_c),"%Y-%m-%d")
 tabela1 = tabela1%>%
   group_by(naselje) %>%
   mutate(datum_c=as.Date(datum_c, format = "%Y-%m-%d"))
-
+tabela1 = tabela1[,c(1,2,4,5,6,8,9)]
 ####TABELA2
 tabela2 = left_join(nadmorske, gostota_prebivalci, by="naselje")
 

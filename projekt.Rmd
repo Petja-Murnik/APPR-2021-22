@@ -1,6 +1,6 @@
 ---
-title: "Poročilo pri predmetu Analiza podatkov s programom R"
-author: "Študent FMF"
+title: "Analiza povezave nadmorske višine, vremenskih razmer in gostote poseljenosti v Sloveniji"
+author: "Petja Murnik"
 output:
   html_document: default
   pdf_document:
@@ -19,6 +19,7 @@ source("lib/libraries.r", encoding="UTF-8")
 
 
 ## Izbira teme
+Odločil sem se za izbrano temo zato, ker si mi je zdelo zanimivo analizirati ali obstaja kakšna povezava med nadmorsko višino, temperaturo, padavinami ter gostoto poseljenosti.
 
 ***
 
@@ -28,6 +29,33 @@ source("lib/libraries.r", encoding="UTF-8")
 source("uvoz/uvoz.r", encoding="UTF-8")
 ```
 
+Podatke sem uvažal iz [spletne strani SURS](https://pxweb.stat.si/SiStat/sl) ter iz [spletne strani ARSO](http://meteo.arso.gov.si/met/sl/archive/). Podatke sem uredil v tri glavne tabele.
+
+1. `tabela1` - mesečni podatki o padavinah, temperaturah ter podatki o nadmorski višini
+- `naselje` - naselje, kjer so bile opravljene meritve
+- `leto` - leto meritve
+- `temperature`- povprečna dnevna temperatura za dan mesec v °C
+- `padavine`- skupne padavine v danem mesecu v mm/m^2
+- `nmv` - nadmorska višina naselje v metrih 
+- `mesec_c`- mesec kot številka(npr.: Januar = 1)
+- `datum_c`- zapisan mesec in leto meritev v formatu`leto-mesec_c`
+
+2. `tabela2` -  letni podatki o gostoti poseljenosti
+- `naselje` - ime naselja
+- `nmv`- nadmorska višina naselje v metrih 
+- `datum` - leto
+- `gostota` - gostota poseljenosti merjena kot ljudje/km^2
+
+3. `tabela3`
+- `naselje` - ime naselja
+- `leto` - leto
+- `avg_t` - povprečje povprečnih mesečnih temperatur za dano leto
+- `avg_p` -  povprečje povprečnih mesečnih padavin za dano leto
+- `avg_preb` - gostota poseljenosti merjena kot ljudje/km^2 leta 2020
+- `nmv` - nadmorska višina naselje v metrih
+- `lon` - geografska dolžina naselja
+- `lat` - geografska širina naselja
+
 ***
 
 ## Analiza in vizualizacija podatkov
@@ -36,13 +64,68 @@ source("uvoz/uvoz.r", encoding="UTF-8")
 source("vizualizacija/vizualizacija.r", encoding="UTF-8")
 ```
 
+
+```{r}
+print(G1)
+```
+
+
+Za začetno predstavo na zgornjem grafu lahko vidimo kako temperature in
+padavine se spreminjajo tekom leta 2010. Podobne rezultate lahko vidimo za ostala
+leta iz opazovanega obdobja med letoma 2001 in 2014.
+
+
+```{r}
+print(g9)
+```
+
+Tu lahko vidimo kako so meteorološke postaje postavljene neenakomerno postavljene
+glede na nadmorsko višino. 
+
+
+```{r}
+print(g13)
+print(g14)
+
+```
+
+
+Zgornja dva grafa lepo ponazarjata kako so naselja razporojena in kako so razporojene 
+temperature in padavine v odvisnosti od lokacije in nadmorske padavine.
+
 ***
 
 ## Napredna analiza podatkov
 
-```{r analiza}
+```{r analiza,results='hide'}
 source("analiza/analiza.r", encoding="UTF-8")
 ```
+Zadal sem si načrt, da s pomočjo podatkov o nadmorskih višinah, temperaturah in 
+padavinah ustvarim napovedni model, ki bi napovedal gostoto poseljenosti za moj 
+domači kraj -- Jesenice . 
+
+```{r, figures-side, fig.show="hold", out.width="50%"}
+print(g_A_2)
+print(g_A_6)
+```
+
+
+Pri desnem grafu sem iz podatkov izvzel Kredarico, saj je tako edinstvena. V levem 
+grafu se povezava med nadmorsko višino in temperaturami zelo lepo vidi, medtem ko 
+na desnem grafu povezava ni tako lepa oziroma enolična. 
+
+
+Ker vemo, da se vreme ne obnaša le po tem in je še veliko drugih dejavnikov(orografske 
+pregrade ipd.) ne presenečana, da je moj napovedni model napovedal zelo narobe. 
+Prav tako velja, da na gostoto poseljenosti ne vplivajo le vremenski dejavniki.
+Za Jesenice je gostoto poseljenosti napovedal 5604 ljudi na km^2 , medtem ko
+je realna gostota poseljenosti le 1562 ljudi na km^2. 
+
+
+```{r}
+print(g12)
+```
+
 
 ***
 

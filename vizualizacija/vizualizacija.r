@@ -5,7 +5,7 @@ library(ggplot2)
 library(dbplyr)
 library(maps)
 library(viridis)
-source("uvoz/uvoz.r", encoding="UTF-8")
+#source("uvoz/uvoz.r", encoding="UTF-8")
 ##dež za vse
  
 g1 = ggplot(tabela1%>%filter(leto == "2010")) + aes(x = mesec_c, y = padavine) +
@@ -55,7 +55,13 @@ g8 = ggplot(tabela3) + aes(x=nmv , y = avg_p)+
 
 ##
 g9 = ggplot(tabela3) + aes(x=nmv , y = avg_preb,color=naselje)+ 
-  geom_point() 
+  geom_point(size = 2.5) + 
+  labs(
+    x = "Nadmorska višina[m]",
+    y = "Gostota poseljenosti [prebivalci/km^2]",
+    title = "Gostota poseljenosti",
+    color = "Naselje"
+  ) 
 #print(g9)
 
 ##
@@ -192,5 +198,7 @@ G1 = ggplot(tabela1%>%filter(leto == "2010")%>%
 #PLAN zaenkrat:
 #G1,g5,g6
 #dodam JESENICE na g13,g14,g15
+
+
 
 
