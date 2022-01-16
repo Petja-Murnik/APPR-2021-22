@@ -79,24 +79,24 @@ g11 = ggplot(tabela3[tabela3$naselje != "Kredarica",]) + aes(x=avg_p , y = avg_p
 
 SLO <- map_data("world") %>% filter(region=="Slovenia")
 data = tabela3 %>%filter(leto=="2010")
-data_12 = rbind(data , JSC)
-data_12 =data_12[data_12$naselje != "Slap pri Vipavi",]
-data_12 = data_12[data_12$naselje != "Brnik",]
-g12 = ggplot() +
-  geom_polygon(data = SLO, aes(x=long, y = lat, group = group), fill="grey", alpha=0.3) +
-  geom_point( data=(data_12), aes(x=lon, y=lat, size=avg_preb,color=nmv)) +
-  scale_size_continuous(range=c(1,12)) +
-  scale_colour_viridis(trans="log",option = "C") +
-  theme_void() + ylim(45,47) + coord_map()  +
-  geom_text(
-    data = data_12,
-    mapping = aes(x = lon , y = lat+0.07, label = naselje),
-    size = 2.5
-  ) + 
-  labs(
-    size = "Gostota poseljenosti",
-    color = "Nadmorska višina"
-  )
+#data_12 = rbind(data , JSC)
+#data_12 =data_12[data_12$naselje != "Slap pri Vipavi",]
+#data_12 = data_12[data_12$naselje != "Brnik",]
+#g12 = ggplot() +
+#  geom_polygon(data = SLO, aes(x=long, y = lat, group = group), fill="grey", alpha=0.3) +
+#  geom_point( data=(data_12), aes(x=lon, y=lat, size=avg_preb,color=nmv)) +
+#  scale_size_continuous(range=c(1,12)) +
+#  scale_colour_viridis(trans="log",option = "C") +
+#  theme_void() + ylim(45,47) + coord_map()  +
+#  geom_text(
+#    data = data_12,
+#    mapping = aes(x = lon , y = lat+0.07, label = naselje),
+#    size = 2.5
+#  ) + 
+#  labs(
+#    size = "Gostota poseljenosti",
+#    color = "Nadmorska višina"
+#  )
 #print(g12)
 
 ##
