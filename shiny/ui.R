@@ -1,17 +1,15 @@
 library(shiny)
 
 shinyUI(fluidPage(
-  
+  column(12,
   titlePanel("Analiza za posamezno naselje"),
-  
-  tabsetPanel(
-    
-    tabPanel("Naslov",
+
              sidebarPanel(
                 sliderInput(
                  "leto1",
                 label = "Leto:",
                  min = 2001, max = 2014, step = 1,
+                round = FALSE, sep = "", ticks = FALSE,
                 value = 2010
   ),
             selectInput(
@@ -28,7 +26,7 @@ shinyUI(fluidPage(
   ))
 ,
     mainPanel(plotOutput("graf"))),
-    uiOutput("izborTabPanel"))))
+    uiOutput("izborTabPanel")))
 
 
 
