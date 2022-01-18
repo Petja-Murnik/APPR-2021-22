@@ -1,5 +1,4 @@
 # 3. faza: Vizualizacija podatkov
-#Plan imam narisat naprej kako za vsako naselje to grejo padavine in temperature(TIME; FASETING)
 
 library(ggplot2)
 library(dbplyr)
@@ -111,6 +110,11 @@ g13 = ggplot() +
     data = data2,
     mapping = aes(x = lon , y = lat+0.07, label = naselje),
     size = 2.5
+  ) + 
+  labs(
+    title = "Nadmorske višine ter povprečne \nmesečne padavine meteoroloških postaj",
+    colour = "Nadmorska višina[m]",
+    size = "Povprečne mesečne \npadavine[mm/m^2]"
   )
 #print(g13)    
 
@@ -126,7 +130,13 @@ g14 = ggplot() +
     data = data3,
     mapping = aes(x = lon , y = lat+0.09, label = naselje),
     size = 2.5
+  ) +  
+  labs(
+    title = "Nadmorske višine ter povprečne dnevne \ntemperature meteoroloških postaj",
+    colour = "Nadmorska višina[m]",
+    size = "Povprečne dnvene \ntemperature[°C]"
   )
+#print
 #print(g14)
 
 
@@ -152,17 +162,11 @@ gg =  ggplot()+ layer(
   ) +   facet_wrap(.~ naselje ,ncol = 3)
 
 
-#==========================ucim se 
+#========================== 
 ylim.prim <- c(0, 100)  
 ylim.sec <- c(0, 8)
 b <- diff(ylim.prim)/diff(ylim.sec)
 a <- ylim.prim[1] - b*ylim.sec[1]
-ggplot(tabela3%>%group_by(naselje), aes(leto, avg_p)) +
-  geom_col() +
-  geom_line(aes(y = a + avg_t*b), color = "red") +
-  scale_y_continuous("Precipitation", sec.axis = sec_axis(~ (. - a)/b, name = "Temperature"))+
-  scale_x_continuous("Month", breaks = 2001:2014) +
-  ggtitle("Climatogram for Oslo (1961-1990)") + facet_wrap(.~naselje , ncol = 3)
 #=======================
 #To moram sedaj skupaj spopat kot vzgoraj 
 #temperatur za vse po vseh mesecih iz tabele 1 
@@ -175,7 +179,7 @@ g6 = ggplot(tabela1) + aes(x = datum_c , y = padavine) +
   geom_line() + facet_wrap(. ~ naselje, ncol = 3) 
 #print(g6)
 #=================
-ggplot(tabela1%>%group_by(naselje), aes(datum_c, padavine)) +
+G7 =  ggplot(tabela1%>%group_by(naselje), aes(datum_c, padavine)) +
   geom_col() +
   geom_line(aes(y = a + temperature*b), color = "red") +
   scale_y_continuous("Precipitation", sec.axis = sec_axis(~ (. - a)/b, name = "Temperature"))+

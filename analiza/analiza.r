@@ -1,5 +1,7 @@
 # 4. faza: Napredna analiza podatkov
+
 library(tidyverse)
+
 JSC = data.frame(naselje = c("Jesenice"),
                  nmv = c(585),
                  lat = c(46.4327),
@@ -7,9 +9,6 @@ JSC = data.frame(naselje = c("Jesenice"),
                  )
 
 podatki = tabela3 
-
-#m_za_padavine = avg_p ~ nmv + lat
-
 
 #===========TEMPERATURE NAPOVEDUJE ZA JSC
 g_A_1 <- ggplot(podatki, aes(x=lat, y=avg_t)) + geom_point() + stat_smooth(method = lm)
@@ -136,9 +135,14 @@ g12 = ggplot() +
   scale_colour_viridis(trans="log",option = "C") +
   theme_void() + ylim(45,47) + coord_map()  +
   geom_text(
-    data = data_12,
+    data = data_12 %>% filter(naselje != "Jesenice"),
     mapping = aes(x = lon , y = lat+0.07, label = naselje),
     size = 2.5
+  ) + 
+  geom_text(
+    data = data_12 %>% filter(naselje == "Jesenice"),
+    mapping = aes(x = lon , y = lat+0.07, label = naselje),
+    size = 2.5 ,colour = "red"
   ) + 
   labs(
     size = "Gostota poseljenosti",

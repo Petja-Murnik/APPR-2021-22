@@ -119,7 +119,8 @@ Ker vemo, da se vreme ne obnaša le po tem in je še veliko drugih dejavnikov(or
 pregrade ipd.) ne presenečana, da je moj napovedni model napovedal zelo narobe. 
 Prav tako velja, da na gostoto poseljenosti ne vplivajo le vremenski dejavniki.
 Za Jesenice je gostoto poseljenosti napovedal 5604 ljudi na km^2 , medtem ko
-je realna gostota poseljenosti le 1562 ljudi na km^2. 
+je realna gostota poseljenosti le 1562 ljudi na km^2. Napoved za Jesenice je na spodnjem 
+grafu označena z rdečimi črkami.
 
 
 ```{r}
