@@ -199,7 +199,7 @@ G1 = ggplot(tabela1%>%filter(leto == "2010")%>%
   scale_y_continuous("Padavine v mesecu[mm/m^2]", sec.axis = sec_axis(~ (. - a)/b, name = "Temperature[°C]"))+
   scale_x_continuous("Mesec",breaks = 1:12) +
   ggtitle("Padavine in temperature za leto 2010") + facet_wrap(.~naselje , ncol = 3)+
-  facet_wrap(. ~ naselje, ncol = 3) 
+  facet_wrap(. ~ naselje, ncol = 3)  + theme_bw()
 #print(G1)
 #Ta zgleda bolj uporabn
 #print(g5)

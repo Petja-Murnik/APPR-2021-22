@@ -1,8 +1,7 @@
 library(shiny)
 
 shinyUI(fluidPage(
-  column(12,
-  titlePanel("Analiza za posamezno naselje"),
+  titlePanel(""),
 
              sidebarPanel(
                 sliderInput(
@@ -25,7 +24,7 @@ shinyUI(fluidPage(
               selected = "Bilje"
   ))
 ,
-    mainPanel(plotOutput("graf"))),
+    mainPanel(plotOutput("graf")),
     uiOutput("izborTabPanel")))
 
 

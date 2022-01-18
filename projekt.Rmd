@@ -130,7 +130,18 @@ print(g12)
 
 ***
 
+## Analiza za posamezno naselje
+
+
+V spodnji aplikaciji lahko izbiramo eno izmed 20 meteoroloških postaj in za vsako leto 
+posebej proučujemo gibanje temperatur in padavin
+
 ```{r shiny}
-shinyAppDir("shiny", options=list(width="100%", height=500))
+shinyAppDir("shiny", options=list(width="100%", height=800))
 ```
+
+
+***
+
+
 
