@@ -9,26 +9,31 @@ Analiziral bom vpliv nadmorske višine na temperaturo in padavine v Sloveniji. P
 ## Zasnova
 ### Tabela 1
 Stolpci bodo:
-* `naselje`
-* `nadmorska_visina`
-* `leto`
-* `mesec` 
-* `temperatura` 
-* `padavine`
+- `naselje` - naselje, kjer so bile opravljene meritve
+- `leto` - leto meritve
+- `temperature`- povprečna dnevna temperatura za dan mesec v °C
+- `padavine`- skupne padavine v danem mesecu v mm/m^2
+- `nmv` - nadmorska višina naselje v metrih 
+- `mesec_c`- mesec kot številka(npr.: Januar = 1)
+- `datum_c`- zapisan mesec in leto meritev v formatu`leto-mesec_c`
 
 ### Tabela 2 
 Stolpci bodo:
-* `naselje`
-* `nadmorska_visina`
-* `gostota_prebivalstvo`
+- `naselje` - ime naselja
+- `nmv`- nadmorska višina naselje v metrih 
+- `datum` - leto
+- `gostota` - gostota poseljenosti merjena kot ljudje/km^2
 
 ### Tabela 3
 Stolpci bodo:
-* `naselje`
-* `nadmorska_visina`
-* `avg_temperatura`
-* `avg_padavine`
-* `gostota_prebivalstvo`
+- `naselje` - ime naselja
+- `leto` - leto
+- `avg_t` - povprečna dnevna temperatura za dano leto
+- `avg_p` -  povprečje povprečnih mesečnih padavin za dano leto
+- `avg_preb` - gostota poseljenosti merjena kot ljudje/km^2 leta 2020
+- `nmv` - nadmorska višina naselje v metrih
+- `lon` - geografska dolžina naselja
+- `lat` - geografska širina naselja
 
 ## Program
 
