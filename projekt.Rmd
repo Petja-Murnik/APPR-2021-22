@@ -35,7 +35,9 @@ gostoto poseljenosti. Iz dobljenih rezultatov bi nato sestavil napovedni model.
 source("uvoz/uvoz.r", encoding="UTF-8")
 ```
 
-Podatke sem uvažal iz [spletne strani SURS](https://pxweb.stat.si/SiStat/sl) ter iz [spletne strani ARSO](http://meteo.arso.gov.si/met/sl/archive/). Podatke sem uredil v tri glavne tabele.
+Podatke sem uvažal iz [spletne strani SURS](https://pxweb.stat.si/SiStat/sl) ter iz [spletne strani ARSO](http://meteo.arso.gov.si/met/sl/archive/).Podatke o nadmorski višini, 
+geografski širini ter višini sem sam moral poiskati na medmrežju, shranjeval sem jih v
+Excel datoteki, iz katerih sem podatke nato uvozil. Podatke sem uredil v tri glavne tabele.
 
 1. `tabela1` - mesečni podatki o padavinah, temperaturah ter podatki o nadmorski višini
 - `naselje` - naselje, kjer so bile opravljene meritve
