@@ -1,11 +1,4 @@
 # 2. faza: Uvoz podatkov
-library(readr)
-library(dplyr)
-library(stringr)
-library(tidyr)
-library(rvest)
-library(tidyverse)
-library(readxl)
 
 sl <- locale("sl", decimal_mark=".", grouping_mark=",")
 

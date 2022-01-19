@@ -1,7 +1,5 @@
 # 4. faza: Napredna analiza podatkov
 
-library(tidyverse)
-
 JSC = data.frame(naselje = c("Jesenice"),
                  nmv = c(585),
                  lat = c(46.4327),

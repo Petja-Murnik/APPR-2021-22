@@ -1,10 +1,5 @@
 # 3. faza: Vizualizacija podatkov
 
-library(ggplot2)
-library(dbplyr)
-library(maps)
-library(viridis)
-
 #OPOMBA: Kjer je #======== je graf tudi v poročilu
 
 #dež za vse
