@@ -55,7 +55,7 @@ Podatke sem uvažal iz [spletne strani SURS](https://pxweb.stat.si/SiStat/sl) te
 3. `tabela3`
 - `naselje` - ime naselja
 - `leto` - leto
-- `avg_t` - povprečje povprečnih mesečnih temperatur za dano leto
+- `avg_t` - povprečna dnevna temperatura za dano leto
 - `avg_p` -  povprečje povprečnih mesečnih padavin za dano leto
 - `avg_preb` - gostota poseljenosti merjena kot ljudje/km^2 leta 2020
 - `nmv` - nadmorska višina naselje v metrih
