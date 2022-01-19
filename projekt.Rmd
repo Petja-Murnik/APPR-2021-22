@@ -21,6 +21,12 @@ source("lib/libraries.r", encoding="UTF-8")
 ## Izbira teme
 Odločil sem se za izbrano temo zato, ker si mi je zdelo zanimivo analizirati ali obstaja kakšna povezava med nadmorsko višino, temperaturo, padavinami ter gostoto poseljenosti.
 
+
+Moja osnovna ideja je najti kako so povezane temperature in padavine 
+s temperaturami. Nato pa iskati povezave med padavinami in temperaturami ter 
+gostoto poseljenosti. Iz dobljenih rezultatov bi nato sestavil napovedni model.
+
+
 ***
 
 ## Obdelava, uvoz in čiščenje podatkov
@@ -137,7 +143,7 @@ V spodnji aplikaciji lahko izbiramo eno izmed 20 meteoroloških postaj in za vsa
 posebej proučujemo gibanje temperatur in padavin
 
 ```{r shiny}
-shinyAppDir("shiny", options=list(width="100%", height=800))
+shinyAppDir("shiny", options=list(width="100%"))
 ```
 
 ***
@@ -145,3 +151,8 @@ shinyAppDir("shiny", options=list(width="100%", height=800))
 ## Zaključek
 
 
+Pričakovano se napovedni model za Jesenice ne obnese, ker je vreme tako edinstveno
+ter podatkov premalo. 
+
+
+***

@@ -2,7 +2,7 @@ library(shiny)
 
 shinyUI(fluidPage(
   titlePanel(""),
-
+  sidebarLayout(position = "left",
              sidebarPanel(
                 sliderInput(
                  "leto1",
@@ -24,7 +24,7 @@ shinyUI(fluidPage(
               selected = "Bilje"
   ))
 ,
-    mainPanel(plotOutput("graf")),
+    mainPanel(plotOutput("graf"))),
     uiOutput("izborTabPanel")))
 
 
