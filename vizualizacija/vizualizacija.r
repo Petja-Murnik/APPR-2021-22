@@ -47,7 +47,8 @@ g9 = ggplot(tabela3) + aes(x=nmv , y = avg_preb,color=naselje)+
   labs(
     x = "Nadmorska višina[m]",
     y = "Gostota poseljenosti [prebivalci/km^2]",
-    title = "Gostota poseljenosti"
+    title = "Gostota poseljenosti",
+    color = ""
   ) 
 #==========================================
 
