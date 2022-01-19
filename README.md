@@ -44,3 +44,27 @@ Potrebne knjižnice so v datoteki `lib/libraries.r`
 Podatkovni viri so v mapi `podatki/`.
 Zemljevidi v obliki SHP, ki jih program pobere,
 se shranijo v mapo `../zemljevidi/` (torej izven mape projekta).
+
+## Potrebni paketi za R
+
+Za zagon tega vzorca je potrebno namestiti sledeče pakete za R:
+
+* `knitr` - za izdelovanje poročila
+* `rmarkdown` - za prevajanje poročila v obliki RMarkdown
+* `shiny` - za prikaz spletnega vmesnika
+* `readr` - za branje podatkov
+* `rvest` - za pobiranje spletnih strani
+* `tidyr` - za preoblikovanje podatkov v obliko *tidy data*
+* `dplyr` - za delo s podatki
+* `gsubfn` - za delo z nizi (čiščenje podatkov)
+* `ggplot2` - za izrisovanje grafov
+* `tmap` - za risanje na zemljevide
+* `tidyverse` - za delo s podatki oblike *tidy data*
+* `dbplyr` - za delo s podatki
+* `maps` - za uvoz zamljevidov
+* `viridis` - za barvne lestvice pri risanju grafov
+* `stringr` - za delo z regularnimi izrazi
+* `readxl` - za uvoz iz Excel-ove datoteke
+
+
+
