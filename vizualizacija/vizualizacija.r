@@ -64,16 +64,17 @@ g11 = ggplot(tabela3[tabela3$naselje != "Kredarica",]) + aes(x=avg_p , y = avg_p
 #===================================
 SLO <- map_data("world") %>% filter(region=="Slovenia")
 data = tabela3 %>%filter(leto=="2010")
-data2 = data[-c(17,18),]
+data2 = data[-c(17,18),] #izvzel NA
+data2 = data2 %>% filter(naselje != "Kredarica") #Izvzel kredarico da lahko uporabim trans = log
 g13 = ggplot() +
   geom_polygon(data = SLO, aes(x=long, y = lat, group = group), fill="grey", alpha=0.3) +
   geom_point( data=data2, aes(x=lon, y=lat, size=avg_p,color=nmv)) +
   scale_size_continuous(range=c(1,12)) +
-  scale_color_viridis(trans="log",option = "C") +
+  scale_color_viridis(trans="identity",option = "C") +
   theme_void() + ylim(45,47) + coord_map()  +
   geom_text(
     data = data2,
-    mapping = aes(x = lon , y = lat+0.07, label = naselje),
+    mapping = aes(x = lon , y = lat+0.09, label = naselje),
     size = 2.5
   ) + 
   labs(
@@ -83,11 +84,12 @@ g13 = ggplot() +
   )
 #===============================================
 data3 = data[-17,]
+data3 = data3 %>% filter(naselje != "Kredarica")
 g14 = ggplot() +
   geom_polygon(data = SLO, aes(x=long, y = lat, group = group), fill="grey", alpha=0.3) +
   geom_point( data=data3, aes(x=lon, y=lat, size=avg_t,color=nmv)) +
-  scale_size_continuous(range=c(1,12)) +
-  scale_color_viridis(trans="log",option = "C") +
+  scale_size_continuous(range=c(1,11)) +
+  scale_color_viridis(trans="identity",option = "C") +
   theme_void() + ylim(45,47) + coord_map()  +
   geom_text(
     data = data3,
