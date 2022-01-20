@@ -42,8 +42,8 @@ Excel datoteki, iz katerih sem podatke nato uvozil. Podatke sem uredil v tri gla
 1. `tabela1` - mesečni podatki o padavinah, temperaturah ter podatki o nadmorski višini
 - `naselje` - naselje, kjer so bile opravljene meritve
 - `leto` - leto meritve
-- `temperature`- povprečna dnevna temperatura za dan mesec v °C
-- `padavine`- skupne padavine v danem mesecu v mm/m^2
+- `temperature`- povprečna dnevna temperatura za dan mesec v $°C$
+- `padavine`- skupne padavine v danem mesecu v $\frac{mm}{m^2}$
 - `nmv` - nadmorska višina naselje v metrih 
 - `mesec_c`- mesec kot številka(npr.: Januar = 1)
 - `datum_c`- zapisan mesec in leto meritev v formatu`leto-mesec_c`
@@ -52,7 +52,7 @@ Excel datoteki, iz katerih sem podatke nato uvozil. Podatke sem uredil v tri gla
 - `naselje` - ime naselja
 - `nmv`- nadmorska višina naselje v metrih 
 - `datum` - leto
-- `gostota` - gostota poseljenosti merjena kot ljudje/km^2
+- `gostota` - gostota poseljenosti merjena kot $\frac{ljudje}{km^2}$
 
 3. `tabela3`
 - `naselje` - ime naselja
