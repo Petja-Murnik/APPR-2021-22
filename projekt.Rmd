@@ -59,7 +59,7 @@ Excel datoteki, iz katerih sem podatke nato uvozil. Podatke sem uredil v tri gla
 - `leto` - leto
 - `avg_t` - povprečna dnevna temperatura za dano leto
 - `avg_p` -  povprečje povprečnih mesečnih padavin za dano leto
-- `avg_preb` - gostota poseljenosti merjena kot ljudje/km^2 leta 2020
+- `avg_preb` - gostota poseljenosti merjena kot $\frac{ljudje}{km^2}$ leta 2020
 - `nmv` - nadmorska višina naselje v metrih
 - `lon` - geografska dolžina naselja
 - `lat` - geografska širina naselja
@@ -126,8 +126,8 @@ na desnem grafu povezava ni tako lepa oziroma enolična.
 Ker vemo, da se vreme ne obnaša le po tem in je še veliko drugih dejavnikov(orografske 
 pregrade ipd.) ne presenečana, da je moj napovedni model napovedal zelo narobe. 
 Prav tako velja, da na gostoto poseljenosti ne vplivajo le vremenski dejavniki.
-Za Jesenice je gostoto poseljenosti napovedal 5604 ljudi na km^2 , medtem ko
-je realna gostota poseljenosti le 1562 ljudi na km^2. Napoved za Jesenice je na spodnjem 
+Za Jesenice je gostoto poseljenosti napovedal  $\frac{ljudje}{km^2}$ , medtem ko
+je realna gostota poseljenosti le 1562  $\frac{ljudje}{km^2}$. Napoved za Jesenice je na spodnjem 
 grafu označena z rdečimi črkami.
 
 

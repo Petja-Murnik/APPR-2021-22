@@ -144,7 +144,7 @@ g12 = ggplot() +
     size = 2.5 ,colour = "red"
   ) + 
   labs(
-    size = "Gostota poseljenosti",
-    color = "Nadmorska višina"
+    size = "Gostota poseljenosti [prebivalci/km^2]",
+    color = "Nadmorska višina[m]"
   )
 
