@@ -70,6 +70,6 @@ Za zagon tega vzorca je potrebno namestiti sledeče pakete za R:
 * `viridis` - za barvne lestvice pri risanju grafov
 * `stringr` - za delo z regularnimi izrazi
 * `readxl` - za uvoz iz Excel-ove datoteke
-
+* `ggplotly` - za interaktivno delo z grafi
 
 

@@ -14,6 +14,7 @@ library(viridis)
 library(stringr)
 library(readxl)
 library(rmarkdown)
+library(plotly)
   
 options(gsubfn.engine="R")
 
