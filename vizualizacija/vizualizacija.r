@@ -49,7 +49,7 @@ g9 = ggplot(tabela3) + aes(x=nmv , y = avg_preb,color=naselje)+
     y = "Gostota poseljenosti [prebivalci/km^2]",
     title = "Gostota poseljenosti",
     color = ""
-  ) 
+  ) + theme(legend.position = "none")
 #==========================================
 
 #Kako je gostota poseljenosti od temperatur, je tudi pri analizi
